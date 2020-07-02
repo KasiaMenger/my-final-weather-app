@@ -1,0 +1,85 @@
+body {
+  font-family: "Poppins", sans-serif;
+}
+#search-form {
+  padding: 30px;
+  margin: 0 auto;
+  size: 60 px 80px;
+}
+#clickSubmit {
+  color: black;
+  background-color: #73da6a;
+  border-radius: 5px;
+  border-color: white;
+  border: 0.1px;
+  padding: 3.5px;
+}
+#clickSubmit:hover {
+  background-color: white;
+  cursor: pointer;
+}
+#cityInput {
+  border-radius: 5px;
+  border-color: #73da6a;
+  border: 5px;
+  padding: 3.5px;
+}
+h1,
+h2 {
+  position: relative;
+  margin: 0 30px;
+  font-size: 55px;
+  text-transform: capitalize;
+}
+.clickForTemp {
+  color: black;
+  background-color: #8efde5;
+  border-radius: 5px;
+  border-color: white;
+  font-size: 30px;
+  border: 0.1px;
+}
+.clickForTemp:hover {
+  background-color: #73da6a;
+  cursor: pointer;
+}
+.timeAndDate {
+  margin: 0 30px;
+  font-size: 20px;
+  color: rgb(21, 21, 32);
+}
+.whatWeather {
+  width: 250px;
+  position: absolute;
+  top: 195px;
+  right: 430px;
+  opacity: 85%;
+  border-radius: 5px;
+  border-color: white;
+  border: 0.1px;
+}
+.card-text {
+  padding: 0;
+  margin: 0;
+}
+.card-body {
+  font-size: 12px;
+  padding: 0.5px;
+  margin: 0.5px;
+}
+h5 {
+  font-size: 16px;
+}
+.wrapp {
+  background: linear-gradient(
+    180deg,
+    rgba(212, 209, 255, 1) 0%,
+    rgba(144, 255, 227, 1) 32%,
+    rgba(117, 227, 250, 1) 100%
+  );
+  border: 1px solid rgb(170, 170, 170);
+  border-radius: 5px;
+  padding: 10px;
+  margin: 20px auto;
+  max-width: 700px;
+}
