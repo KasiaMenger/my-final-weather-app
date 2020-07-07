@@ -1,125 +1,159 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Weather</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
-        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+      integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+      crossorigin="anonymous"
+    />
     <link rel="stylesheet" href="style.css" />
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap"
+      rel="stylesheet"
+    />
     <script src="script.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-</head>
-
-<body>
+  </head>
+  <body>
     <div class="wrapp">
-        <form id="search-form">
-            <input type="text" placeholder="Enter city name" autofocus="on" autocomplete="on" id="city-input" />
-            <input type="submit" value="Get the Weather" id="clickSubmit" />
-        </form>
-        <h1>Annecy</h1>
-        <p class="timeAndDate">Rainy day</p>
-        <h2><span class="convertToC"> 14</span> <span class="celciusToF">
-                <button type="button" class="clickForTemp" id="celcius">
-                    ℃
-                </button>
-                <button type="button" class="clickForTemp" id="fahrenheit">
-                    ℉
-                </button>
-            </span></h2>
-        <div class="timeAndDate">
-            <p>
-                Local time <span id="currentTime">21:34</span>
-            <div id="currentDate">09/06/2020</div>
+      <form id="search-form">
+        <input
+          type="text"
+          placeholder="Enter city name"
+          autofocus="on"
+          autocomplete="on" 
+          id="city-input"
+        />
+        <input type="submit" value="Get the Weather" id="clickSubmit" />
+      </form>
+      <h1>Annecy</h1>
+     <p class="timeAndDate">Rainy day</p>
+      <h2><span class="convertToC"> 14</span> <span class="celciusToF">
+        <button type="button" class="clickForTemp" id="celcius">
+          ℃
+        </button>
+        <button type="button" class="clickForTemp" id="fahrenheit">
+          ℉
+        </button>
+      </span></h2>
+      <div class="timeAndDate">
+        <p>
+          Local time <span id="currentTime">21:34</span>
+          <div id="currentDate">09/06/2020</div>
+        </p>
+      </div>
+      <img
+        src="pictures/Rain.png"
+        alt="weather-type-image"
+        class="whatWeather"
+      />
+      <hr />
+      <div class="card-deck">
+        <div class="card">
+          <img
+            src="pictures/Storm.png"
+            class="card-img-top"
+            alt="weather-type-image"
+          />
+          <div class="card-body">
+            <h5 class="card-title">10/06/2020</h5>
+            <p class="card-text">
+              Tomorrow
+              <br />
+              16℃
+              <br />
+              Expect Stormy Weather
             </p>
+            <p class="card-text">
+              <small class="text-muted">Last updated 3 mins ago</small>
+            </p>
+          </div>
         </div>
-        <img src="pictures/Rain.png" alt="weather-type-image" class="whatWeather" />
-        <hr />
-        <div class="card-deck">
-            <div class="card">
-                <img src="pictures/Storm.png" class="card-img-top" alt="weather-type-image" />
-                <div class="card-body">
-                    <h5 class="card-title">10/06/2020</h5>
-                    <p class="card-text">
-                        Tomorrow
-                        <br />
-                        16℃
-                        <br />
-                        Expect Stormy Weather
-                    </p>
-                    <p class="card-text">
-                        <small class="text-muted">Last updated 3 mins ago</small>
-                    </p>
-                </div>
-            </div>
-            <div class="card">
-                <img src="pictures/Sunny.png" class="card-img-top" alt="weather-type-image" />
-                <div class="card-body">
-                    <h5 class="card-title">11/06/2020</h5>
-                    <p class="card-text">
-                        Wednesday
-                        <br />
-                        19℃
-                        <br />
-                        Expect Sunny Weather
-                    </p>
-                    <p class="card-text">
-                        <small class="text-muted">Last updated 3 mins ago</small>
-                    </p>
-                </div>
-            </div>
-            <div class="card">
-                <img src="pictures/Cloudy.png" class="card-img-top" alt="weather-type-image" />
-                <div class="card-body">
-                    <h5 class="card-title">12/06/2020</h5>
-                    <p class="card-text">
-                        Thursday
-                        <br />
-                        16℃
-                        <br />
-                        Expect Cloudy Weather
-                    </p>
-                    <p class="card-text">
-                        <small class="text-muted">Last updated 3 mins ago</small>
-                    </p>
-                </div>
-            </div>
-            <div class="card">
-                <img src="pictures/Storm.png" class="card-img-top" alt="weather-type-image" />
-                <div class="card-body">
-                    <h5 class="card-title">13/06/2020</h5>
-                    <p class="card-text">
-                        Friday
-                        <br />
-                        16℃
-                        <br />
-                        Expect Stormy Weather
-                    </p>
-                    <p class="card-text">
-                        <small class="text-muted">Last updated 3 mins ago</small>
-                    </p>
-                </div>
-            </div>
-            <div class="card">
-                <img src="pictures/Storm.png" class="card-img-top" alt="weather-type-image" />
-                <div class="card-body">
-                    <h5 class="card-title">14/06/2020</h5>
-                    <p class="card-text">
-                        Saturday
-                        <br />
-                        16℃
-                        <br />
-                        Expect Stormy Weather
-                    </p>
-                    <p class="card-text">
-                        <small class="text-muted">Last updated 3 mins ago</small>
-                    </p>
-                </div>
-            </div>
+        <div class="card">
+          <img
+            src="pictures/Sunny.png"
+            class="card-img-top"
+            alt="weather-type-image"
+          />
+          <div class="card-body">
+            <h5 class="card-title">11/06/2020</h5>
+            <p class="card-text">
+              Wednesday
+              <br />
+              19℃
+              <br />
+              Expect Sunny Weather
+            </p>
+            <p class="card-text">
+              <small class="text-muted">Last updated 3 mins ago</small>
+            </p>
+          </div>
         </div>
+        <div class="card">
+          <img
+            src="pictures/Cloudy.png"
+            class="card-img-top"
+            alt="weather-type-image"
+          />
+          <div class="card-body">
+            <h5 class="card-title">12/06/2020</h5>
+            <p class="card-text">
+              Thursday
+              <br />
+              16℃
+              <br />
+              Expect Cloudy Weather
+            </p>
+            <p class="card-text">
+              <small class="text-muted">Last updated 3 mins ago</small>
+            </p>
+          </div>
+        </div>
+        <div class="card">
+          <img
+            src="pictures/Storm.png"
+            class="card-img-top"
+            alt="weather-type-image"
+          />
+          <div class="card-body">
+            <h5 class="card-title">13/06/2020</h5>
+            <p class="card-text">
+              Friday
+              <br />
+              16℃
+              <br />
+              Expect Stormy Weather
+            </p>
+            <p class="card-text">
+              <small class="text-muted">Last updated 3 mins ago</small>
+            </p>
+          </div>
+        </div>
+        <div class="card">
+          <img
+            src="pictures/Storm.png"
+            class="card-img-top"
+            alt="weather-type-image"
+          />
+          <div class="card-body">
+            <h5 class="card-title">14/06/2020</h5>
+            <p class="card-text">
+              Saturday
+              <br />
+              16℃
+              <br />
+              Expect Stormy Weather
+            </p>
+            <p class="card-text">
+              <small class="text-muted">Last updated 3 mins ago</small>
+            </p>
+          </div>
+        </div>
+      </div>
     </div>
-</body>
-
+  </body>
 </html>
