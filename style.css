@@ -26,7 +26,6 @@ body {
 }
 h1,
 h2 {
-  position: relative;
   margin: 0 30px;
   font-size: 55px;
   text-transform: capitalize;
@@ -49,14 +48,14 @@ h2 {
   color: rgb(21, 21, 32);
 }
 .whatWeather {
-  width: 250px;
-  position: absolute;
-  top: 195px;
-  right: 430px;
+  width: 260px;
   opacity: 85%;
   border-radius: 5px;
   border-color: white;
   border: 0.1px;
+}
+.col-5 {
+  top: 75px;
 }
 .card-text {
   padding: 0;
@@ -83,4 +82,3 @@ h5 {
   margin: 20px auto;
   max-width: 700px;
 }
-.source {text-align: center;}
