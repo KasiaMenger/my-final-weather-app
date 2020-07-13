@@ -84,6 +84,30 @@ function tempDisplay(response) {
   let descriptionElement = document.querySelector("#description");
   descriptionElement.innerHTML = response.data.weather[0].description;
   celciusTemperature = response.data.main.temp;
+  let img = document.querySelector("#currentWeatherImage");
+  img.setAttribute("src", getImagePath(response.data.weather[0].main));
+}
+
+function getImagePath(description) {
+  if (description === "Clear") {
+    return "pictures/Sunny.png";
+  } else if (description === "Drizzle" || description === "Rain") {
+    return "pictures/Rain.png";
+  } else if (description === "Clouds") {
+    return "pictures/Cloudy.png";
+  } else if (description === "Thunderstorm") {
+    return "pictures/Storm.png";
+  } else if (description === "Snow") {
+    return "pictures/Snow.png";
+  } else if (
+    description === "Mist" ||
+    description === "Smoke" ||
+    description === "Haze" ||
+    description === "Fog" ||
+    description === "Dust"
+  ) {
+    return "pictures/Fogg.png";
+  }
 }
 
 function currentTemp(position) {
