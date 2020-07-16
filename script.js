@@ -82,8 +82,9 @@ function displayForecast(response) {
   for (let index = 0; index < 5; index++) {
     let forecast = response.data.list[index];
     forecastElement.innerHTML = `<div class="card">
-        <img id="cardOne"|| img id="cardTwo" || img id="cardThree" || img id="cardFive" || img id="cardFour" src="pictures" class="card-img-top" alt="weather-type-image" />
-        <div class="card-body">
+ <img src="${getImagePath(
+   forecast.data.weather[index].main
+ )}" class="card-img-top" alt="weather-type-image" />
           <h5 class="card-title">10/06/2020</h5>
           <p class="card-text">
             Tomorrow
