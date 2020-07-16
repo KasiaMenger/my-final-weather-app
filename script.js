@@ -17,7 +17,7 @@ let weekDays = [
   "Wednesday",
   "Thursday",
   "Friday",
-  "Saturday"
+  "Saturday",
 ];
 let today = weekDays[now.getDay()];
 
@@ -35,7 +35,7 @@ let months = [
   "September",
   "October",
   "November",
-  "December"
+  "December",
 ];
 
 let month = months[now.getMonth()];
@@ -59,13 +59,43 @@ function searchCity(event) {
   let city = document.querySelector("h1");
   city.innerHTML = cityInput.value;
   let apiKey = "749810e34b6703478a9c495fcd73dc8a";
-  let apiURL = `https://api.openweathermap.org/data/2.5/weather?q=${
-    cityInput.value
-  }&units=metric&appid=${apiKey}`;
+  let apiURL = `https://api.openweathermap.org/data/2.5/weather?q=${cityInput.value}&units=metric&appid=${apiKey}`;
   axios.get(apiURL).then(tempDisplay);
 }
 let searchForm = document.querySelector("#search-form");
 searchForm.addEventListener("submit", searchCity);
+
+function displayForecast(response) {
+  let forecastElement = document.querySelector("#forecast");
+  let forecast = null;
+
+  let img = document.querySelector("#cardOne");
+  let img = document.querySelector("#cardTwo");
+  let img = document.querySelector("#cardThree");
+  let img = document.querySelector("#cardFour");
+  let img = document.querySelector("#cardFive");
+  img.setAttribute(
+    "src",
+    getImagePath(forecast.data.weather[0 || 1 || 2 || 3 || 4].main)
+  );
+
+  for (let index = 0; index < 5; index++) {
+    let forecast = response.data.list[index];
+    forecastElement.innerHTML = `<div class="card">
+        <img id="cardOne"|| img id="cardTwo" || img id="cardThree" || img id="cardFive" || img id="cardFour" src="pictures" class="card-img-top" alt="weather-type-image" />
+        <div class="card-body">
+          <h5 class="card-title">10/06/2020</h5>
+          <p class="card-text">
+            Tomorrow
+            <br />
+            <strong>${Math.round(forecast.data.weather.main.temp)}°</strong>
+            <br />
+            Expect Stormy Weather
+          </p>
+        </div>
+      </div>`;
+  }
+}
 
 function currentLocation(position) {
   let units = "metric";
@@ -74,6 +104,9 @@ function currentLocation(position) {
   let apiKey = "749810e34b6703478a9c495fcd73dc8a";
   let apiURL = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=${units}&appid=${apiKey}`;
   axios.get(apiURL).then(cityDisplay);
+
+  apiURL = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=${units}&appid=${apiKey}`;
+  axios.get(apiURL).then(displayForecast);
 }
 navigator.geolocation.getCurrentPosition(currentLocation);
 
