@@ -68,30 +68,18 @@ searchForm.addEventListener("submit", searchCity);
 function displayForecast(response) {
   let forecastElement = document.querySelector("#forecast");
   let forecast = null;
-
-  let img = document.querySelector("#cardOne");
-  let img = document.querySelector("#cardTwo");
-  let img = document.querySelector("#cardThree");
-  let img = document.querySelector("#cardFour");
-  let img = document.querySelector("#cardFive");
-  img.setAttribute(
-    "src",
-    getImagePath(forecast.data.weather[0 || 1 || 2 || 3 || 4].main)
-  );
-
+  forecastElement.innerHTML = "";
   for (let index = 0; index < 5; index++) {
     let forecast = response.data.list[index];
-    forecastElement.innerHTML = `<div class="card">
+    forecastElement.innerHTML += `<div class="card">
  <img src="${getImagePath(
-   forecast.data.weather[index].main
+   forecast.weather[0].main
  )}" class="card-img-top" alt="weather-type-image" />
-          <h5 class="card-title">10/06/2020</h5>
+          <h5 class="card-title">${forecast.dt * 1000}</h5>
           <p class="card-text">
-            Tomorrow
+            <strong>${Math.round(forecast.main.temp)}°</strong>
             <br />
-            <strong>${Math.round(forecast.data.weather.main.temp)}°</strong>
-            <br />
-            Expect Stormy Weather
+            <strong>${forecast.weather[0].description}</strong>
           </p>
         </div>
       </div>`;
@@ -109,6 +97,7 @@ function currentLocation(position) {
   apiURL = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=${units}&appid=${apiKey}`;
   axios.get(apiURL).then(displayForecast);
 }
+
 navigator.geolocation.getCurrentPosition(currentLocation);
 
 function tempDisplay(response) {
