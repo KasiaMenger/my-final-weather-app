@@ -65,17 +65,40 @@ function searchCity(event) {
 let searchForm = document.querySelector("#search-form");
 searchForm.addEventListener("submit", searchCity);
 
+function formatHours(timestamp) {
+  let time = new Date(timestamp);
+  let hours = time.getHours();
+  if (hours < 10) {
+    hours = `0${hours}`;
+  }
+  let minutes = time.getMinutes();
+  if (minutes < 10) {
+    minutes = `0${minutes}`;
+  }
+  return `${hours}:${minutes}`;
+}
+
+function formatWeekDay(timestamp) {
+  let date = new Date(timestamp);
+  let weekDays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+  let weekDay = weekDays[date.getDay()];
+  return `${weekDay}`;
+}
+
 function displayForecast(response) {
   let forecastElement = document.querySelector("#forecast");
   let forecast = null;
   forecastElement.innerHTML = "";
+
   for (let index = 0; index < 5; index++) {
     let forecast = response.data.list[index];
+    let weekDay = formatWeekDay(forecast.dt * 1000);
     forecastElement.innerHTML += `<div class="card">
  <img src="${getImagePath(
    forecast.weather[0].main
  )}" class="card-img-top" alt="weather-type-image" />
-          <h5 class="card-title">${forecast.dt * 1000}</h5>
+          <h5 class="card-title">${weekDay}
+          ${formatHours(forecast.dt * 1000)}</h5>
           <p class="card-text">
             <strong>${Math.round(forecast.main.temp)}°</strong>
             <br />
